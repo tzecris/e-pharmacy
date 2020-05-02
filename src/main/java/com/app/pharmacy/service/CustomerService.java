@@ -1,8 +1,8 @@
 package com.app.pharmacy.service;
 
-import com.app.pharmacy.model.Customer;
+import com.app.pharmacy.dto.CustomerDTO;
 
-public interface CustomerService extends GenericService<Customer> {
+public interface CustomerService extends GenericService<CustomerDTO> {
 
 
 }

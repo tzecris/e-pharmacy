@@ -1,5 +1,7 @@
 package com.app.pharmacy.service;
 
+import com.app.pharmacy.dto.CustomerDTO;
+import com.app.pharmacy.mapper.CustomerMapper;
 import com.app.pharmacy.model.Customer;
 import com.app.pharmacy.repository.CustomerRepository;
 import java.util.List;
@@ -14,27 +16,24 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepository customerRepo;
 
+    @Autowired
+    CustomerMapper customerMapper;
+
     @Override
-    public List<Customer> findAll() {
-        return customerRepo.findAll();
+    public List<CustomerDTO> findAll() {
+        return customerMapper.entityToDTOList(customerRepo.findAll());
     }
 
     @Override
     @Transactional
-    public Customer save(Customer entity) {
-        return customerRepo.save(entity);
+    public void save(CustomerDTO dto) {
+        customerRepo.save(customerMapper.dtoToEntity(dto));
     }
 
     @Override
-    public Customer findById(Integer id) {
+    public CustomerDTO findById(Integer id) {
         Optional<Customer> result = customerRepo.findById(id);
-        return result.isPresent() ? result.get() : null;
-    }
-
-    @Override
-    @Transactional
-    public void delete(Customer entity) {
-        customerRepo.delete(entity);
+        return result.isPresent() ? customerMapper.entityToDTO(result.get()) : null;
     }
 
     @Override

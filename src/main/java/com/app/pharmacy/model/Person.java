@@ -6,9 +6,7 @@
 package com.app.pharmacy.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,12 +16,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -124,12 +120,12 @@ public class Person implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getEMail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEMail(String eMail) {
-        this.email = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {

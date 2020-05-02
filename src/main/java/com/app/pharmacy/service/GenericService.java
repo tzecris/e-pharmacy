@@ -6,11 +6,9 @@ public interface GenericService<T> {
 
     List<T> findAll();
 
-    T save(T entity);
+    void save(T dto);
 
     T findById(Integer id);
-
-    void delete(T entity);
 
     void deleteById(Integer id);
 
