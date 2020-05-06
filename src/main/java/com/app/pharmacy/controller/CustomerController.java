@@ -41,4 +41,9 @@ public class CustomerController {
         customerService.deleteById(id);
         return ResponseEntity.ok(new ResponseMessage("Customer deleted successfully!"));
     }
+
+    @PostMapping("unique")
+    public ResponseEntity uniqueCustomer() {
+        return ResponseEntity.ok("");
+    }
 }

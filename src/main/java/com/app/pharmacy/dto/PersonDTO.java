@@ -7,12 +7,8 @@ public class PersonDTO {
 
     private Integer personId;
 
-    @NotNull
-    @Size(min = 1, max = 45)
     private String firstName;
 
-    @NotNull
-    @Size(min = 1, max = 45)
     private String lastName;
 
     @NotNull
@@ -23,12 +19,13 @@ public class PersonDTO {
     @Size(min = 1, max = 45)
     private String username;
 
-    @NotNull
     private int phoneNumber;
 
     @NotNull
     @Size(min = 1, max = 45)
     private String password;
+
+    private AddressDTO address;
 
     public PersonDTO() {
     }
@@ -88,4 +85,13 @@ public class PersonDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public AddressDTO getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressDTO address) {
+        this.address = address;
+    }
+
 }

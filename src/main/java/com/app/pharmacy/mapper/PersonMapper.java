@@ -5,11 +5,7 @@ import com.app.pharmacy.model.Person;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
-/**
- *
- * @author Admin
- */
-@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(uses = {AddressMapper.class}, componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface PersonMapper {
 
     PersonDTO entityToDTO(Person person);

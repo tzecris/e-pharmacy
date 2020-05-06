@@ -7,6 +7,7 @@ package com.app.pharmacy.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,37 +48,39 @@ public class Person implements Serializable {
     @Basic(optional = false)
     @Column(name = "person_id")
     private Integer personId;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+
+    @Basic(optional = true)
     @Column(name = "first_name")
     private String firstName;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+
+    @Basic(optional = true)
     @Column(name = "last_name")
     private String lastName;
+
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "email")
     private String email;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     private String username;
-    @Basic(optional = false)
-    @NotNull
+
+    @Basic(optional = true)
     @Column(name = "phone_number")
     private int phoneNumber;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     private String password;
+
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-    @ManyToOne
-    private Address addressId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Address address;
 
     public Person() {
     }
@@ -152,12 +155,12 @@ public class Person implements Serializable {
         this.password = password;
     }
 
-    public Address getAddressId() {
-        return addressId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(Address addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
