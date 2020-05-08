@@ -4,5 +4,6 @@ import com.app.pharmacy.dto.CustomerDTO;
 
 public interface CustomerService extends GenericService<CustomerDTO> {
 
+    public boolean uniqueEmail(String email);
 
 }

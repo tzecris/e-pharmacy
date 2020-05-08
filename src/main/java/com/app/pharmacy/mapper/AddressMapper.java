@@ -6,10 +6,6 @@ import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
-public interface AddressMapper {
-
-    AddressDTO entityToDTO(Address address);
-
-    Address dtoToEntity(AddressDTO addressDTO);
+public interface AddressMapper extends GenericMapper<AddressDTO, Address> {
 
 }

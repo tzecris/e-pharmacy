@@ -15,10 +15,6 @@ public class PersonDTO {
     @Size(min = 1, max = 45)
     private String email;
 
-    @NotNull
-    @Size(min = 1, max = 45)
-    private String username;
-
     private int phoneNumber;
 
     @NotNull
@@ -60,14 +56,6 @@ public class PersonDTO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public int getPhoneNumber() {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -42,8 +43,8 @@ public class CustomerController {
         return ResponseEntity.ok(new ResponseMessage("Customer deleted successfully!"));
     }
 
-    @PostMapping("unique")
-    public ResponseEntity uniqueCustomer() {
-        return ResponseEntity.ok("");
+    @PostMapping("/unique")
+    public ResponseEntity uniqueEmail(@RequestParam("email") String email) {
+        return ResponseEntity.ok(customerService.uniqueEmail(email));
     }
 }

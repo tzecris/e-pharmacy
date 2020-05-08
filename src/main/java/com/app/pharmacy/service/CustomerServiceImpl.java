@@ -42,4 +42,10 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepo.deleteById(id);
     }
 
+    @Override
+    public boolean uniqueEmail(String email) {
+        List<Customer> result = customerRepo.findByEmail(email);
+        return result.isEmpty() ? true : false;
+    }
+
 }

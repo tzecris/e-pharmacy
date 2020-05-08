@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.app.pharmacy.model;
 
 import java.io.Serializable;
@@ -22,10 +17,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Admin
- */
 @Entity
 @Table(name = "person")
 @XmlRootElement
@@ -64,11 +55,6 @@ public class Person implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    private String username;
-
     @Basic(optional = true)
     @Column(name = "phone_number")
     private int phoneNumber;
@@ -89,12 +75,11 @@ public class Person implements Serializable {
         this.personId = personId;
     }
 
-    public Person(Integer personId, String firstName, String lastName, String eMail, String username, int phoneNumber, String password) {
+    public Person(Integer personId, String firstName, String lastName, String email, int phoneNumber, String password) {
         this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = eMail;
-        this.username = username;
+        this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
     }
@@ -129,14 +114,6 @@ public class Person implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public int getPhoneNumber() {
