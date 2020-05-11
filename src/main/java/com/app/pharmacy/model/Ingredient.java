@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Admin
  */
 @Entity
-@Table(name = "ingedient")
+@Table(name = "ingredient")
 @XmlRootElement
 //@NamedQueries({
 //    @NamedQuery(name = "Ingredient.findAll", query = "SELECT i FROM Ingredient i")
@@ -38,7 +38,7 @@ public class Ingredient implements Serializable {
     @Size(max = 45)
     private String name;
     private Integer stock;
-    private Long price;
+    private Double price;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingredient")
     private Collection<IngredientOrderVip> ingredientOrderVipCollection;
 
@@ -73,11 +73,11 @@ public class Ingredient implements Serializable {
         this.stock = stock;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 }

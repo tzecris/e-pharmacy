@@ -5,9 +5,9 @@ public class IngredientDTO {
   
     private String name;
     private Integer stock;
-    private Long price;
+    private Double price;
 
-    public IngredientDTO(String name, Integer stock, Long price) {
+    public IngredientDTO(String name, Integer stock, Double price) {
         this.name = name;
         this.stock = stock;
         this.price = price;
@@ -32,11 +32,11 @@ public class IngredientDTO {
         this.stock = stock;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
