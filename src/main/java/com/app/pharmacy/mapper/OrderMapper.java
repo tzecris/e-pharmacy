@@ -22,14 +22,14 @@ public abstract class OrderMapper {
     CustomerRepository customerRepository;
 
     @Mapping(source = "customer.personId", target = "customerId")
-    abstract OrderDTO entityToDTO(Order entity);
+    public abstract OrderDTO entityToDTO(Order entity);
 
     @Mapping(source = "customerId", target = "customer")
-    abstract Order dtoToEntity(OrderDTO dto);
+    public abstract Order dtoToEntity(OrderDTO dto);
 
-    abstract List<OrderDTO> entityToDTOList(List<Order> list);
+    public abstract List<OrderDTO> entityToDTOList(List<Order> list);
 
-    abstract List<Order> dtoToEntityList(List<OrderDTO> dtoList);
+    public abstract List<Order> dtoToEntityList(List<OrderDTO> dtoList);
 
     public Customer getCustomer(Integer customerId) {
         Optional<Customer> result = customerRepository.findById(customerId);
