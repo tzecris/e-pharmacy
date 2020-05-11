@@ -22,8 +22,9 @@ public class CustomerController {
     CustomerService customerService;
 
     @GetMapping
-    public ResponseEntity findAll() {
-        return ResponseEntity.ok(customerService.findAll());
+    public ResponseEntity findAll(@RequestParam(name = "page", defaultValue = "0") int page, @RequestParam(name = "size", defaultValue = "10") int size, @RequestParam(name = "sort", defaultValue = "personId") String sort) {
+
+        return ResponseEntity.ok(customerService.findAllPegination(page, size, sort));
     }
 
     @PostMapping

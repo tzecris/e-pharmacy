@@ -1,5 +1,6 @@
 package com.app.pharmacy.dto;
 
+import com.app.pharmacy.model.StatusEnum;
 import java.util.Date;
 
 /**
@@ -10,18 +11,17 @@ public class OrderDTO {
 
     private Integer orderId;
 
-    private Date date;
+    private Date orderDate;
 
     private Integer prescriptionZipcode;
 
-    private Integer status;
+    private StatusEnum status;
 
     private String payment;
 
     private byte[] prescription;
 
 //    private List<ProductDTO> productDTOList;
-
     private Integer customerId;
 
     public OrderDTO() {
@@ -35,12 +35,12 @@ public class OrderDTO {
         this.orderId = orderId;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     public Integer getPrescriptionZipcode() {
@@ -51,11 +51,11 @@ public class OrderDTO {
         this.prescriptionZipcode = prescriptionZipcode;
     }
 
-    public Integer getStatus() {
+    public StatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(StatusEnum status) {
         this.status = status;
     }
 
@@ -82,6 +82,5 @@ public class OrderDTO {
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
-
 
 }

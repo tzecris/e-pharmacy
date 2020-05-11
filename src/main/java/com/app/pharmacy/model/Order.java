@@ -46,10 +46,11 @@ public class Order implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+    @Column(name = "order_date")
+    private Date orderDate;
     @Column(name = "prescription_zipcode")
     private Integer prescriptionZipcode;
-    private Integer status;
+    private StatusEnum status;
     @Size(max = 45)
     private String payment;
     @Lob
@@ -69,7 +70,7 @@ public class Order implements Serializable {
 
     public Order(Integer orderId, Date date) {
         this.orderId = orderId;
-        this.date = date;
+        this.orderDate = date;
     }
 
     public Integer getOrderId() {
@@ -80,12 +81,12 @@ public class Order implements Serializable {
         this.orderId = orderId;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     public Integer getPrescriptionZipcode() {
@@ -94,14 +95,6 @@ public class Order implements Serializable {
 
     public void setPrescriptionZipcode(Integer prescriptionZipcode) {
         this.prescriptionZipcode = prescriptionZipcode;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public String getPayment() {
@@ -140,6 +133,14 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         return "com.app.pharmacy.model.Order[ orderId=" + orderId + " ]";
+    }
+
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusEnum status) {
+        this.status = status;
     }
 
 }

@@ -7,6 +7,9 @@ import com.app.pharmacy.repository.CustomerRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,7 +48,14 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public boolean uniqueEmail(String email) {
         List<Customer> result = customerRepo.findByEmail(email);
-        return result.isEmpty() ? true : false;
+        return result.isEmpty(); //result.isEmpty() ? true : false;
+    }
+
+    @Override
+    public List<CustomerDTO> findAllPegination(int page, int size, String sort) {
+        Pageable pageable
+                = PageRequest.of(page, size, Sort.by(sort));
+        return customerMapper.entityToDTOList(customerRepo.findAll(pageable).getContent());
     }
 
 }
