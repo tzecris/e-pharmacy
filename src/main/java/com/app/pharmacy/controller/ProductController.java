@@ -43,9 +43,6 @@ public class ProductController {
         return ResponseEntity.ok(new ResponseMessage("Product deleted successfully!"));
     }
 
-    @PostMapping("unique")
-    public ResponseEntity uniqueCustomer() {
-        return ResponseEntity.ok("");
-    }
+    
     
 }

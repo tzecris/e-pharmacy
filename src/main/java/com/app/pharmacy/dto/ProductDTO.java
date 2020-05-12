@@ -28,7 +28,7 @@ public class ProductDTO {
     private Integer stock;
     
     @NotNull
-    private Long price;
+    private Double price;
 
     public Integer getProductId() {
         return productId;
@@ -83,11 +83,11 @@ public class ProductDTO {
         this.stock = stock;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
     

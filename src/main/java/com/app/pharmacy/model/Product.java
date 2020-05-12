@@ -56,7 +56,7 @@ public class Product implements Serializable {
     private Integer type;
     private Short prescripted;
     private Integer stock;
-    private Long price;
+    private Double price;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private Collection<ProductOrder> productOrderCollection;
 
@@ -120,11 +120,11 @@ public class Product implements Serializable {
         this.stock = stock;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
