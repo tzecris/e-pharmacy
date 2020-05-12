@@ -6,23 +6,19 @@ import javax.validation.constraints.Size;
 
 
 public class ProductDTO {
-    
-    @NotNull
+
     private Integer productId;
     
     @NotNull
-    @Size(min = 1, max = 45)
     private String name;
     
     @NotNull
-    @Size(min = 1, max = 45)
     private String description;
     
     @NotNull
     private Integer type;
-    
-    @NotNull
-    private Short prescripted;
+
+    private boolean prescripted;
     
     @NotNull
     private Integer stock;
@@ -67,11 +63,11 @@ public class ProductDTO {
         this.type = type;
     }
 
-    public Short getPrescripted() {
+    public boolean getPrescripted() {
         return prescripted;
     }
 
-    public void setPrescripted(Short prescripted) {
+    public void setPrescripted(boolean prescripted) {
         this.prescripted = prescripted;
     }
 

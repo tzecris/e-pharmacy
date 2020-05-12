@@ -46,7 +46,7 @@ public class PersonServiceImpl implements PersonService{
     @Override
     public boolean uniqueEmail(String email) {
         List<Person> result = personRepo.findByEmail(email);
-        return result.isEmpty() ? true : false;
+        return result.isEmpty();
     }
 
     
