@@ -2,6 +2,7 @@ package com.app.pharmacy.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -32,6 +33,8 @@ public class Customer extends Person implements Serializable {
     private Vip vipId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private List<Order> orderList = new ArrayList<>();
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private Collection<RatingsPerCustomer> ratingsPerCustomerCollection;
 
     public Customer() {
     }
@@ -68,6 +71,16 @@ public class Customer extends Person implements Serializable {
     public void setOrderCollection(List<Order> orderList) {
         this.orderList = orderList;
     }
+
+    public Collection<RatingsPerCustomer> getRatingsPerCustomerCollection() {
+        return ratingsPerCustomerCollection;
+    }
+
+    public void setRatingsPerCustomerCollection(Collection<RatingsPerCustomer> ratingsPerCustomerCollection) {
+        this.ratingsPerCustomerCollection = ratingsPerCustomerCollection;
+    }
+    
+    
 
     @Override
     public String toString() {

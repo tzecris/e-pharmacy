@@ -1,6 +1,7 @@
 package com.app.pharmacy.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -39,6 +40,8 @@ public class Product implements Serializable {
     private Double price;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
     private List<ProductOrder> productOrderList;
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private Collection<RatingsPerCustomer> ratingsPerCustomerCollection;
 
     public Product() {
     }
@@ -115,5 +118,15 @@ public class Product implements Serializable {
     public void setProductOrderList(List<ProductOrder> productOrderList) {
         this.productOrderList = productOrderList;
     }
+
+    public Collection<RatingsPerCustomer> getRatingsPerCustomerCollection() {
+        return ratingsPerCustomerCollection;
+    }
+
+    public void setRatingsPerCustomerCollection(Collection<RatingsPerCustomer> ratingsPerCustomerCollection) {
+        this.ratingsPerCustomerCollection = ratingsPerCustomerCollection;
+    }
+    
+    
 
 }
