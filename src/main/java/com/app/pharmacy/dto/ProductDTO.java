@@ -2,7 +2,6 @@
 package com.app.pharmacy.dto;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 
 public class ProductDTO {
@@ -19,6 +18,12 @@ public class ProductDTO {
     private Integer type;
 
     private boolean prescripted;
+
+    private byte[] image;
+
+    private Double discount;
+
+    private Double finalPrice;
     
     @NotNull
     private Integer stock;
@@ -86,9 +91,29 @@ public class ProductDTO {
     public void setPrice(Double price) {
         this.price = price;
     }
-    
-    
-    
-    
-    
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
+    }
+
+    public Double getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(Double finalPrice) {
+        this.finalPrice = finalPrice;
+    }
+
 }

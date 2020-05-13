@@ -6,12 +6,11 @@ public class IngredientDTO {
     private String name;
     private Integer stock;
     private Double price;
+    private Double finalPrice;
+    private byte[] image;
+    private Double discount;
+    private String description;
 
-    public IngredientDTO(String name, Integer stock, Double price) {
-        this.name = name;
-        this.stock = stock;
-        this.price = price;
-    }
 
     public IngredientDTO() {
     }
@@ -40,6 +39,36 @@ public class IngredientDTO {
         this.price = price;
     }
 
-    
-    
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(Double finalPrice) {
+        this.finalPrice = finalPrice;
+    }
+
 }

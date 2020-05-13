@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,6 +38,10 @@ public class Product implements Serializable {
     private boolean prescripted;
     private Integer stock;
     private Double price;
+    @Transient
+    private Double finalPrice;
+    private byte[] image;
+    private Double discount;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
     private List<ProductOrder> productOrderList;
 
@@ -114,6 +119,34 @@ public class Product implements Serializable {
 
     public void setProductOrderList(List<ProductOrder> productOrderList) {
         this.productOrderList = productOrderList;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
+    }
+
+    public Double getFinalPrice() {
+        if (this.discount == null) {
+            return this.price;
+        }
+        //Round double with two decimals
+        return Math.round((this.price - ((this.discount / 100) * this.price)) * 100.0) / 100.0;
+    }
+
+    public void setFinalPrice(Double finalPrice) {
+        this.finalPrice = finalPrice;
     }
 
 }

@@ -1,32 +1,24 @@
 package com.app.pharmacy.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Admin
- */
 @Entity
 @Table(name = "ingredient")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Ingredient.findAll", query = "SELECT i FROM Ingredient i")
-//    , @NamedQuery(name = "Ingredient.findByIngredientId", query = "SELECT i FROM Ingredient i WHERE i.ingredientId = :ingredientId")
-//    , @NamedQuery(name = "Ingredient.findByName", query = "SELECT i FROM Ingredient i WHERE i.name = :name")
-//    , @NamedQuery(name = "Ingredient.findByStock", query = "SELECT i FROM Ingredient i WHERE i.stock = :stock")
-//    , @NamedQuery(name = "Ingredient.findByPrice", query = "SELECT i FROM Ingredient i WHERE i.price = :price")})
 public class Ingredient implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,8 +31,13 @@ public class Ingredient implements Serializable {
     private String name;
     private Integer stock;
     private Double price;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingredient")
-    private Collection<IngredientOrderVip> ingredientOrderVipCollection;
+    @Transient
+    private Double finalPrice;
+    private byte[] image;
+    private Double discount;
+    private String description;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingredient", fetch = FetchType.LAZY)
+    private List<IngredientOrderVip> ingredientOrderVipList;
 
     public Ingredient() {
     }
@@ -80,4 +77,41 @@ public class Ingredient implements Serializable {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getFinalPrice() {
+        if (this.discount == null) {
+            return this.price;
+        }
+        //Round double with two decimals
+        return Math.round((this.price - ((this.discount / 100) * this.price)) * 100.0) / 100.0;
+    }
+
+    public void setFinalPrice(Double finalPrice) {
+        this.finalPrice = finalPrice;
+    }
+
 }
