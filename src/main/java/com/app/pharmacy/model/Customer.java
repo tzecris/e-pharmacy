@@ -2,7 +2,6 @@ package com.app.pharmacy.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -17,11 +16,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "customer")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
-//    , @NamedQuery(name = "Customer.findByCustomerId", query = "SELECT c FROM Customer c WHERE c.customerId = :customerId")
-//    , @NamedQuery(name = "Customer.findByAmka", query = "SELECT c FROM Customer c WHERE c.amka = :amka")
-//    , @NamedQuery(name = "Customer.findByAfm", query = "SELECT c FROM Customer c WHERE c.afm = :afm")})
 @PrimaryKeyJoinColumn(name = "person_id")
 public class Customer extends Person implements Serializable {
 
@@ -33,8 +27,6 @@ public class Customer extends Person implements Serializable {
     private Vip vipId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private List<Order> orderList = new ArrayList<>();
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
-    private Collection<RatingsPerCustomer> ratingsPerCustomerCollection;
 
     public Customer() {
     }
@@ -70,21 +62,6 @@ public class Customer extends Person implements Serializable {
 
     public void setOrderCollection(List<Order> orderList) {
         this.orderList = orderList;
-    }
-
-    public Collection<RatingsPerCustomer> getRatingsPerCustomerCollection() {
-        return ratingsPerCustomerCollection;
-    }
-
-    public void setRatingsPerCustomerCollection(Collection<RatingsPerCustomer> ratingsPerCustomerCollection) {
-        this.ratingsPerCustomerCollection = ratingsPerCustomerCollection;
-    }
-    
-    
-
-    @Override
-    public String toString() {
-        return "com.app.pharmacy.model.Customer[ customerId=" + super.getPersonId() + " ]";
     }
 
 }

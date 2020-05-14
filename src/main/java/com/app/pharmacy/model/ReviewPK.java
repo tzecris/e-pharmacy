@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
 @Embeddable
-public class RatingsPerCustomerPK implements Serializable {
+public class ReviewPK implements Serializable {
 
     @Basic(optional = false)
     @NotNull
@@ -19,10 +19,10 @@ public class RatingsPerCustomerPK implements Serializable {
     @Column(name = "product_id", nullable = false)
     private int productId;
 
-    public RatingsPerCustomerPK() {
+    public ReviewPK() {
     }
 
-    public RatingsPerCustomerPK(int customerId, int productId) {
+    public ReviewPK(int customerId, int productId) {
         this.customerId = customerId;
         this.productId = productId;
     }
@@ -54,10 +54,10 @@ public class RatingsPerCustomerPK implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RatingsPerCustomerPK)) {
+        if (!(object instanceof ReviewPK)) {
             return false;
         }
-        RatingsPerCustomerPK other = (RatingsPerCustomerPK) object;
+        ReviewPK other = (ReviewPK) object;
         if (this.customerId != other.customerId) {
             return false;
         }
