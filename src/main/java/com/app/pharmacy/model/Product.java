@@ -44,6 +44,8 @@ public class Product implements Serializable {
     private Double discount;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
     private List<ProductOrder> productOrderList;
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<Review> ratingsPerCustomerList;
 
     public Product() {
     }
@@ -148,5 +150,14 @@ public class Product implements Serializable {
     public void setFinalPrice(Double finalPrice) {
         this.finalPrice = finalPrice;
     }
+    public List<Review> getRatingsPerCustomerCollection() {
+        return ratingsPerCustomerList;
+    }
+
+    public void setRatingsPerCustomerCollection(List<Review> ratingsPerCustomerCollection) {
+        this.ratingsPerCustomerList = ratingsPerCustomerCollection;
+    }
+    
+    
 
 }

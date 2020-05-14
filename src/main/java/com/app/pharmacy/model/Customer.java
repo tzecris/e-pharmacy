@@ -16,11 +16,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "customer")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
-//    , @NamedQuery(name = "Customer.findByCustomerId", query = "SELECT c FROM Customer c WHERE c.customerId = :customerId")
-//    , @NamedQuery(name = "Customer.findByAmka", query = "SELECT c FROM Customer c WHERE c.amka = :amka")
-//    , @NamedQuery(name = "Customer.findByAfm", query = "SELECT c FROM Customer c WHERE c.afm = :afm")})
 @PrimaryKeyJoinColumn(name = "person_id")
 public class Customer extends Person implements Serializable {
 
@@ -67,11 +62,6 @@ public class Customer extends Person implements Serializable {
 
     public void setOrderCollection(List<Order> orderList) {
         this.orderList = orderList;
-    }
-
-    @Override
-    public String toString() {
-        return "com.app.pharmacy.model.Customer[ customerId=" + super.getPersonId() + " ]";
     }
 
 }
