@@ -1,7 +1,7 @@
 package com.app.pharmacy.dto;
 
+import com.app.pharmacy.model.RoleEnum;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 public class PersonDTO {
 
@@ -9,16 +9,16 @@ public class PersonDTO {
 
     private String firstName;
 
+    private RoleEnum role;
+
     private String lastName;
 
     @NotNull
-    @Size(min = 1, max = 45)
     private String email;
 
     private int phoneNumber;
 
     @NotNull
-    @Size(min = 1, max = 45)
     private String password;
 
     private AddressDTO address;
@@ -80,6 +80,14 @@ public class PersonDTO {
 
     public void setAddress(AddressDTO address) {
         this.address = address;
+    }
+
+    public RoleEnum getRole() {
+        return role;
+    }
+
+    public void setRole(RoleEnum role) {
+        this.role = role;
     }
 
 }

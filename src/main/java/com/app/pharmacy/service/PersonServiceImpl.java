@@ -7,6 +7,7 @@ import com.app.pharmacy.repository.PersonRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,9 @@ public class PersonServiceImpl implements PersonService{
     @Autowired
     PersonMapper personMapper;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public List<PersonDTO> findAll() {
         return personMapper.entityToDTOList(personRepo.findAll());
@@ -28,6 +32,7 @@ public class PersonServiceImpl implements PersonService{
     @Override
     @Transactional
     public void save(PersonDTO dto) {
+        dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         personRepo.save(personMapper.dtoToEntity(dto));
     }
 
@@ -45,13 +50,8 @@ public class PersonServiceImpl implements PersonService{
 
     @Override
     public boolean uniqueEmail(String email) {
-        List<Person> result = personRepo.findByEmail(email);
-        return result.isEmpty();
+        personRepo.findByEmail(email).isPresent();
+        return !personRepo.findByEmail(email).isPresent();
     }
-
-    
-    
-    
-    
     
 }

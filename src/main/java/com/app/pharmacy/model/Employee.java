@@ -20,19 +20,16 @@ public class Employee extends Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Basic(optional = false)
-    @NotNull
-    private RoleEnum role;
-
+    private Double salary;
     public Employee() {
     }
 
-    public RoleEnum getRole() {
-        return role;
+    public Double getSalary() {
+        return salary;
     }
 
-    public void setRole(RoleEnum role) {
-        this.role = role;
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 
 }

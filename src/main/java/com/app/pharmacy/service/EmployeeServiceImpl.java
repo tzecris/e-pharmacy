@@ -7,6 +7,7 @@ import com.app.pharmacy.repository.EmployeeRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,6 +23,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     EmployeeMapper employeeMapper;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Override
     public List<EmployeeDTO> findAll() {
         return employeeMapper.entityToDTOList(employeeRepository.findAll());
@@ -29,6 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void save(EmployeeDTO dto) {
+        dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         employeeRepository.save(employeeMapper.dtoToEntity(dto));
     }
 

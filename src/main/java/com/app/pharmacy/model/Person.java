@@ -55,13 +55,18 @@ public class Person implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "role")
+    private RoleEnum role;
+
     @Basic(optional = true)
     @Column(name = "phone_number")
     private int phoneNumber;
 
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 200)
     private String password;
 
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
@@ -140,9 +145,12 @@ public class Person implements Serializable {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "com.app.pharmacy.model.Person[ personId=" + personId + " ]";
+    public RoleEnum getRole() {
+        return role;
+    }
+
+    public void setRole(RoleEnum role) {
+        this.role = role;
     }
 
 }

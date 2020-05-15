@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +23,9 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerMapper customerMapper;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Override
     public List<CustomerDTO> findAll() {
         return customerMapper.entityToDTOList(customerRepo.findAll());
@@ -30,6 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public void save(CustomerDTO dto) {
+        dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         customerRepo.save(customerMapper.dtoToEntity(dto));
     }
 
