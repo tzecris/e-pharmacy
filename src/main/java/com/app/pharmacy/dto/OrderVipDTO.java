@@ -1,10 +1,10 @@
 
 package com.app.pharmacy.dto;
 
-import com.app.pharmacy.model.Order;
+import com.app.pharmacy.dto.OrderDTO;
 
 
-public class OrderVipDTO extends Order{
+public class OrderVipDTO extends OrderDTO{
     private Long weight;
 
     public OrderVipDTO(Long weight) {
