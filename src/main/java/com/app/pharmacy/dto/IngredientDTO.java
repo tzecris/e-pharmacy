@@ -2,7 +2,8 @@ package com.app.pharmacy.dto;
 
 
 public class IngredientDTO {
-  
+
+    private Integer ingredientId;
     private String name;
     private Integer stock;
     private Double price;
@@ -69,6 +70,14 @@ public class IngredientDTO {
 
     public void setFinalPrice(Double finalPrice) {
         this.finalPrice = finalPrice;
+    }
+
+    public Integer getIngredientId() {
+        return ingredientId;
+    }
+
+    public void setIngredientId(Integer ingredientId) {
+        this.ingredientId = ingredientId;
     }
 
 }

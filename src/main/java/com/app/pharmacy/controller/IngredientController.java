@@ -11,18 +11,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/ingredients")
 public class IngredientController {
-    
-     @Autowired
+
+    @Autowired
     IngredientService ingredientService;
-     
-     @GetMapping
-    public ResponseEntity findAll() {
-        return ResponseEntity.ok(ingredientService.findAll());
+
+    @GetMapping
+    public ResponseEntity findByFilter(@RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size,
+            @RequestParam(name = "sort", defaultValue = "name") String sort) {
+        return ResponseEntity.ok(ingredientService.findAllPegination(page, size, sort));
     }
 
     @PostMapping

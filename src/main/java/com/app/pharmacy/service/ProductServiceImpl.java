@@ -1,20 +1,23 @@
-
 package com.app.pharmacy.service;
 
-
 import com.app.pharmacy.dto.ProductDTO;
+import com.app.pharmacy.dto.SearchResults;
 import com.app.pharmacy.mapper.ProductMapper;
 import com.app.pharmacy.model.Product;
 import com.app.pharmacy.repository.ProductRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ProductServiceImpl implements ProductService{
-    
+public class ProductServiceImpl implements ProductService {
+
     @Autowired
     ProductRepository productRepo;
 
@@ -44,5 +47,16 @@ public class ProductServiceImpl implements ProductService{
         productRepo.deleteById(id);
     }
 
+    @Override
+    public SearchResults findAllPegination(int page, int size, String sort) {
+
+        Pageable pageable
+                = PageRequest.of(page, size, Sort.by(sort));
+        Page pageObject = productRepo.findAll(pageable);
+        SearchResults results
+                = new SearchResults(productMapper.entityToDTOList(pageObject.getContent()), pageObject.getTotalElements());
+        return results;
+
+    }
 
 }

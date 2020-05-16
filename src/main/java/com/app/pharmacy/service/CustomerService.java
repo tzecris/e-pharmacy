@@ -7,6 +7,6 @@ public interface CustomerService extends GenericService<CustomerDTO> {
 
     public boolean uniqueEmail(String email);
 
-    public List<CustomerDTO> findAllPegination(int page, int size, String sort);
+    public List<CustomerDTO> findAllPagination(int page, int size, String sort);
 
 }

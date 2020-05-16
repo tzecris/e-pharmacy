@@ -57,7 +57,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<CustomerDTO> findAllPegination(int page, int size, String sort) {
+    public List<CustomerDTO> findAllPagination(int page, int size, String sort) {
         Pageable pageable
                 = PageRequest.of(page, size, Sort.by(sort));
         return customerMapper.entityToDTOList(customerRepo.findAll(pageable).getContent());
