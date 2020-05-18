@@ -14,8 +14,6 @@ public class ProductDTO {
     @NotNull
     private String description;
 
-//    @NotNull
-//    private Integer type;
     private List<Category> productCategoryList;
 
     private boolean prescripted;
@@ -39,6 +37,14 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
+    public List<Category> getProductCategoryList() {
+        return productCategoryList;
+    }
+
+    public void setProductCategoryList(List<Category> productCategoryList) {
+        this.productCategoryList = productCategoryList;
+    }
+
     public void setProductId(Integer productId) {
         this.productId = productId;
     }
@@ -59,13 +65,6 @@ public class ProductDTO {
         this.description = description;
     }
 
-//    public Integer getType() {
-//        return type;
-//    }
-//
-//    public void setType(Integer type) {
-//        this.type = type;
-//    }
     public boolean getPrescripted() {
         return prescripted;
     }
