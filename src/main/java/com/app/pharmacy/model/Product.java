@@ -157,7 +157,9 @@ public class Product implements Serializable {
     public void setRatingsPerCustomerCollection(List<Review> ratingsPerCustomerCollection) {
         this.ratingsPerCustomerList = ratingsPerCustomerCollection;
     }
+}
+
     
     
 
-}
+

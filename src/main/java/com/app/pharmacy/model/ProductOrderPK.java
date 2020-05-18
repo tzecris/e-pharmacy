@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
  *
  * @author Admin
  */
-@Embeddable
+
 public class ProductOrderPK implements Serializable {
 
     @Basic(optional = false)

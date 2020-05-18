@@ -1,6 +1,7 @@
 
 package com.app.pharmacy.dto;
 
+
 import javax.validation.constraints.NotNull;
 
 
@@ -24,6 +25,8 @@ public class ProductDTO {
     private Double discount;
 
     private Double finalPrice;
+    
+    
     
     @NotNull
     private Integer stock;
