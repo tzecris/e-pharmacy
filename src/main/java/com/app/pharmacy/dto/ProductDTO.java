@@ -1,22 +1,22 @@
-
 package com.app.pharmacy.dto;
 
-
+import java.util.List;
+import java.util.Locale.Category;
 import javax.validation.constraints.NotNull;
-
 
 public class ProductDTO {
 
     private Integer productId;
-    
+
     @NotNull
     private String name;
-    
+
     @NotNull
     private String description;
-    
-    @NotNull
-    private Integer type;
+
+//    @NotNull
+//    private Integer type;
+    private List<Category> productCategoryList;
 
     private boolean prescripted;
 
@@ -25,12 +25,10 @@ public class ProductDTO {
     private Double discount;
 
     private Double finalPrice;
-    
-    
-    
+
     @NotNull
     private Integer stock;
-    
+
     @NotNull
     private Double price;
 
@@ -40,8 +38,6 @@ public class ProductDTO {
 
     public ProductDTO() {
     }
-    
-    
 
     public void setProductId(Integer productId) {
         this.productId = productId;
@@ -63,14 +59,13 @@ public class ProductDTO {
         this.description = description;
     }
 
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
+//    public Integer getType() {
+//        return type;
+//    }
+//
+//    public void setType(Integer type) {
+//        this.type = type;
+//    }
     public boolean getPrescripted() {
         return prescripted;
     }

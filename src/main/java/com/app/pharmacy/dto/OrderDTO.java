@@ -2,6 +2,7 @@ package com.app.pharmacy.dto;
 
 import com.app.pharmacy.model.StatusEnum;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -21,7 +22,8 @@ public class OrderDTO {
 
     private byte[] prescription;
 
-//    private List<ProductDTO> productDTOList;
+    private List<ProductDTO> productDTOList;
+
     private Integer customerId;
 
     public OrderDTO() {
@@ -81,6 +83,14 @@ public class OrderDTO {
 
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
+    }
+
+    public List<ProductDTO> getProductDTOList() {
+        return productDTOList;
+    }
+
+    public void setProductDTOList(List<ProductDTO> productDTOList) {
+        this.productDTOList = productDTOList;
     }
 
 }
