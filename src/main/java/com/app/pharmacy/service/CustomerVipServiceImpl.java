@@ -19,11 +19,6 @@ public class CustomerVipServiceImpl implements CustomerVipService {
     @Autowired
     CustomerVipMapper customerVipMapper;
 
-    @Override
-    public boolean uniqueEmail(String email) {
-        List<Vip> result = customerVipRepo.findByEmail(email);
-        return result.isEmpty(); //result.isEmpty() ? true : false;
-    }
 
     @Override
     public List<CustomerVipDTO> findAll() {

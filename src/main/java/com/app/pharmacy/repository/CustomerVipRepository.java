@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerVipRepository extends  PagingAndSortingRepository<Vip, Integer> {
 
-    public List<Vip> findByEmail(String email);
 
     public List<Vip> findAll();
 
