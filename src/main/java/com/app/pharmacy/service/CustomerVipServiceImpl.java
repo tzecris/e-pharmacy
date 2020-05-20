@@ -1,4 +1,3 @@
-
 package com.app.pharmacy.service;
 
 import com.app.pharmacy.dto.CustomerVipDTO;
@@ -12,8 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CustomerVipServiceImpl implements CustomerVipService{
-    
+public class CustomerVipServiceImpl implements CustomerVipService {
+
     @Autowired
     CustomerVipRepository customerVipRepo;
 
@@ -24,11 +23,6 @@ public class CustomerVipServiceImpl implements CustomerVipService{
     public boolean uniqueEmail(String email) {
         List<Vip> result = customerVipRepo.findByEmail(email);
         return result.isEmpty(); //result.isEmpty() ? true : false;
-    }
-
-    @Override
-    public List<CustomerVipDTO> findAllPegination(int page, int size, String sort) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -53,5 +47,5 @@ public class CustomerVipServiceImpl implements CustomerVipService{
     public void deleteById(Integer id) {
         customerVipRepo.deleteById(id);
     }
-    
+
 }
