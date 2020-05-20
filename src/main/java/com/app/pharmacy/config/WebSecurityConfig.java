@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic().and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/products/**", "/api/ingredients/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/customers").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/customers", "/api/employees").permitAll()
                 .antMatchers("/api/products", "/api/ingredients", "/api/vipcustomers").hasAnyRole("ADMIN", "MANAGER")
                 .antMatchers("/api/customers").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/orders").hasRole("CUSTOMER")

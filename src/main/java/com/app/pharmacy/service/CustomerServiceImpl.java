@@ -34,7 +34,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public void save(CustomerDTO dto) {
-        dto.setPassword(passwordEncoder.encode(dto.getPassword()));
+        if (dto.getPersonId() == null) {
+            dto.setPassword(passwordEncoder.encode(dto.getPassword()));
+        }
+
         customerRepo.save(customerMapper.dtoToEntity(dto));
     }
 

@@ -32,6 +32,15 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             throw new UsernameNotFoundException("Invalid username");
         }
         securityUser.setRole(result.get().getRole());
+        securityUser.setFullName(getFullName(result.get()));
+
+    }
+
+    private String getFullName(Person person) {
+        if (person.getFirstName() == null && person.getLastName() == null) {
+            return person.getEmail();
+        }
+        return (person.getFirstName() + " " + person.getLastName());
     }
 
 }

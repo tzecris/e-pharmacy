@@ -23,7 +23,7 @@ public class Customer extends Person implements Serializable {
     private Integer amka;
     private Integer afm;
     @JoinColumn(name = "vip_id", referencedColumnName = "vip_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Vip vipId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private List<Order> orderList = new ArrayList<>();

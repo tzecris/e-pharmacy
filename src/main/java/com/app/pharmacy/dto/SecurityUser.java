@@ -11,6 +11,7 @@ public class SecurityUser {
     private String username;
     private String password;
     private RoleEnum role;
+    private String fullName;
 
     public SecurityUser() {
     }
@@ -39,5 +40,12 @@ public class SecurityUser {
         this.role = role;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
 }

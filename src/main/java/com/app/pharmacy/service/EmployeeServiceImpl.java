@@ -33,7 +33,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void save(EmployeeDTO dto) {
-        dto.setPassword(passwordEncoder.encode(dto.getPassword()));
+        if (dto.getPersonId() == null) {
+            dto.setPassword(passwordEncoder.encode(dto.getPassword()));
+        }
         employeeRepository.save(employeeMapper.dtoToEntity(dto));
     }
 
