@@ -1,6 +1,7 @@
 package com.app.pharmacy.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -10,6 +11,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -44,8 +48,17 @@ public class Product implements Serializable {
     private Double discount;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
     private List<ProductOrder> productOrderList;
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private List<Review> ratingsPerCustomerList;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "category_per_product",
+            joinColumns = {
+                @JoinColumn(name = "product_id")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "category_id")})
+    private Collection<ProductCategory> categories;
 
     public Product() {
     }
@@ -150,6 +163,7 @@ public class Product implements Serializable {
     public void setFinalPrice(Double finalPrice) {
         this.finalPrice = finalPrice;
     }
+
     public List<Review> getRatingsPerCustomerCollection() {
         return ratingsPerCustomerList;
     }
@@ -157,7 +171,21 @@ public class Product implements Serializable {
     public void setRatingsPerCustomerCollection(List<Review> ratingsPerCustomerCollection) {
         this.ratingsPerCustomerList = ratingsPerCustomerCollection;
     }
-    
-    
+
+    public List<Review> getRatingsPerCustomerList() {
+        return ratingsPerCustomerList;
+    }
+
+    public void setRatingsPerCustomerList(List<Review> ratingsPerCustomerList) {
+        this.ratingsPerCustomerList = ratingsPerCustomerList;
+    }
+
+    public Collection<ProductCategory> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Collection<ProductCategory> categories) {
+        this.categories = categories;
+    }
 
 }

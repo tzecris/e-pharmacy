@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/pharmacy"/>
+<Context path="/pharmacy">
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="my_pharmacy" password="AFDEmp_MySQL1" type="javax.sql.DataSource" url="jdbc:mysql://5.189.135.166:3011/my_pharmacy?zeroDateTimeBehavior=convertToNull" username="root"/>
+</Context>
