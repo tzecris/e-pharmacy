@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -22,6 +23,8 @@ public class Customer extends Person implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer amka;
     private Integer afm;
+    @Transient
+    private String customerInfo;
     @JoinColumn(name = "vip_id", referencedColumnName = "vip_id")
     @ManyToOne(cascade = CascadeType.ALL)
     private Vip vipId;
@@ -29,6 +32,22 @@ public class Customer extends Person implements Serializable {
     private List<Order> orderList = new ArrayList<>();
 
     public Customer() {
+    }
+
+    public String getCustomerInfo() {
+        String result = "Customer info: ";
+        if (super.getFirstName() != null && super.getLastName() != null) {
+            result += super.getFirstName() + " " + super.getLastName() + ", ";
+        }
+        if (this.afm != null) {
+            result += "VAT Reg.: " + this.afm + ", ";
+        }
+        result += "Username: " + super.getEmail() + ".";
+        return result;
+    }
+
+    public void setCustomerInfo(String customerInfo) {
+        this.customerInfo = customerInfo;
     }
 
     public Integer getAmka() {

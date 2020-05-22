@@ -54,9 +54,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public CustomerDTO findByUsername(String email) {
+        Optional<Customer> result = customerRepo.findByEmail(email);
+        return result.isPresent() ? customerMapper.entityToDTO(result.get()) : null;
+    }
+
+    @Override
     public boolean uniqueEmail(String email) {
-        List<Customer> result = customerRepo.findByEmail(email);
-        return result.isEmpty(); //result.isEmpty() ? true : false;
+        Optional<Customer> result = customerRepo.findByEmail(email);
+        return result.isPresent(); //result.isEmpty() ? true : false;
     }
 
     @Override

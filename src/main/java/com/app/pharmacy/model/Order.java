@@ -1,8 +1,8 @@
 package com.app.pharmacy.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,18 +22,10 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "my_order")
 @XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "Order.findAll", query = "SELECT o FROM Order o")
-//    , @NamedQuery(name = "Order.findByOrderId", query = "SELECT o FROM Order o WHERE o.orderId = :orderId")
-//    , @NamedQuery(name = "Order.findByDate", query = "SELECT o FROM Order o WHERE o.date = :date")
-//    , @NamedQuery(name = "Order.findByPrescriptionZipcode", query = "SELECT o FROM Order o WHERE o.prescriptionZipcode = :prescriptionZipcode")
-//    , @NamedQuery(name = "Order.findByStatus", query = "SELECT o FROM Order o WHERE o.status = :status")
-//    , @NamedQuery(name = "Order.findByPayment", query = "SELECT o FROM Order o WHERE o.payment = :payment")})
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Order implements Serializable {
 
@@ -56,10 +48,12 @@ public class Order implements Serializable {
     @Lob
     private byte[] prescription;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
-    private Collection<ProductOrder> productOrderCollection;
+    private List<ProductOrder> productOrderList;
     @JoinColumn(name = "customer_id", referencedColumnName = "person_id")
     @ManyToOne(optional = false)
     private Customer customer;
+    @Column(name = "address_info")
+    private String addressInfo;
 
     public Order() {
     }
@@ -113,14 +107,22 @@ public class Order implements Serializable {
         this.prescription = prescription;
     }
 
-    @XmlTransient
-    public Collection<ProductOrder> getProductOrderCollection() {
-        return productOrderCollection;
+    public List<ProductOrder> getProductOrderList() {
+        return productOrderList;
     }
 
-    public void setProductOrderCollection(Collection<ProductOrder> productOrderCollection) {
-        this.productOrderCollection = productOrderCollection;
+    public void setProductOrderList(List<ProductOrder> productOrderList) {
+        this.productOrderList = productOrderList;
     }
+
+    public String getAddressInfo() {
+        return addressInfo;
+    }
+
+    public void setAddressInfo(String addressInfo) {
+        this.addressInfo = addressInfo;
+    }
+
 
     public Customer getCustomer() {
         return customer;

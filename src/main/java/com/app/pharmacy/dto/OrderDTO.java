@@ -26,6 +26,10 @@ public class OrderDTO {
 
     private Integer customerId;
 
+    private String customerInfo;
+
+    private String addressInfo;
+
     public OrderDTO() {
     }
 
@@ -91,6 +95,22 @@ public class OrderDTO {
 
     public void setProductDTOList(List<ProductDTO> productDTOList) {
         this.productDTOList = productDTOList;
+    }
+
+    public String getCustomerInfo() {
+        return customerInfo;
+    }
+
+    public void setCustomerInfo(String customerInfo) {
+        this.customerInfo = customerInfo;
+    }
+
+    public String getAddressInfo() {
+        return addressInfo;
+    }
+
+    public void setAddressInfo(String addressInfo) {
+        this.addressInfo = addressInfo;
     }
 
 }

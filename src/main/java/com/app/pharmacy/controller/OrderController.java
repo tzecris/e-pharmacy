@@ -30,18 +30,18 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity createCustomer(@RequestBody OrderDTO c) {
+    public ResponseEntity createOrder(@RequestBody OrderDTO c) {
         orderService.save(c);
         return ResponseEntity.ok(new ResponseMessage("Order created succesfully!"));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getCustomer(@PathVariable Integer id) {
+    public ResponseEntity getOrder(@PathVariable Integer id) {
         return ResponseEntity.ok(orderService.findById(id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteCustomer(@PathVariable Integer id) {
+    public ResponseEntity deleteOrder(@PathVariable Integer id) {
         orderService.deleteById(id);
         return ResponseEntity.ok(new ResponseMessage("Order deleted successfully!"));
     }

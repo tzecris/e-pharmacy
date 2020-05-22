@@ -18,7 +18,7 @@ public class ProductDTO {
 
     private boolean prescripted;
 
-    private byte[] image;
+    private String image;
 
     private Double discount;
 
@@ -29,6 +29,8 @@ public class ProductDTO {
 
     @NotNull
     private Double price;
+
+    private Integer quantity;
 
     public Integer getProductId() {
         return productId;
@@ -89,11 +91,11 @@ public class ProductDTO {
         this.price = price;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -113,4 +115,11 @@ public class ProductDTO {
         this.finalPrice = finalPrice;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 }

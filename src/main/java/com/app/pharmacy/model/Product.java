@@ -18,7 +18,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -34,17 +33,14 @@ public class Product implements Serializable {
     private Integer productId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
     private String name;
-    @Size(max = 45)
     private String description;
-    private Integer type;
     private boolean prescripted;
     private Integer stock;
     private Double price;
     @Transient
     private Double finalPrice;
-    private byte[] image;
+    private String image;
     private Double discount;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
     private List<ProductOrder> productOrderList;
@@ -96,14 +92,6 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
     public boolean getPrescripted() {
         return prescripted;
     }
@@ -136,11 +124,11 @@ public class Product implements Serializable {
         this.productOrderList = productOrderList;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
