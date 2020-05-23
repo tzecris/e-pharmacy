@@ -2,7 +2,6 @@
 package com.app.pharmacy.service;
 
 import com.app.pharmacy.dto.ProductCategoryDTO;
-import com.app.pharmacy.dto.SearchResults;
 import com.app.pharmacy.mapper.ProductCategoryMapper;
 import com.app.pharmacy.model.ProductCategory;
 import com.app.pharmacy.repository.ProductCategoryRepository;

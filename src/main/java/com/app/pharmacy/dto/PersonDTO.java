@@ -21,6 +21,9 @@ public class PersonDTO {
     @NotNull
     private String password;
 
+    @NotNull
+    private String newPassword;
+
     private AddressDTO address;
 
     public PersonDTO() {
@@ -88,6 +91,14 @@ public class PersonDTO {
 
     public void setRole(RoleEnum role) {
         this.role = role;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 
 }

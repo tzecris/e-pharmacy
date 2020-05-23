@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
@@ -29,12 +28,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api/products/**", "/api/ingredients/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/products/**", "/api/productcategories/**", "/api/customers/unique/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/customers", "/api/employees").permitAll()
                 .antMatchers("/api/products", "/api/ingredients", "/api/vipcustomers").hasAnyRole("ADMIN", "MANAGER")
                 .antMatchers("/api/customers").hasAnyRole("EMPLOYEE", "ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/orders").hasRole("CUSTOMER")
-                .antMatchers(HttpMethod.GET, "/api/orders").hasAnyRole("ADMIN", "CUSTOMER", "MANAGER")
+                .antMatchers(HttpMethod.GET, "/api/orders", "/api/customers/**").hasAnyRole("ADMIN", "CUSTOMER", "MANAGER")
                 .antMatchers("/api/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 //                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

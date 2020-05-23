@@ -33,6 +33,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void save(EmployeeDTO dto) {
+
+        if (dto.getNewPassword() != null && dto.getNewPassword().length() > 0) {
+            dto.setPassword(passwordEncoder.encode(dto.getNewPassword()));
+        }
         if (dto.getPersonId() == null) {
             dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         }

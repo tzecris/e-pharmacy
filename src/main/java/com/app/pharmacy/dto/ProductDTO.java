@@ -1,7 +1,6 @@
 package com.app.pharmacy.dto;
 
 import java.util.List;
-import java.util.Locale.Category;
 import javax.validation.constraints.NotNull;
 
 public class ProductDTO {
@@ -14,7 +13,7 @@ public class ProductDTO {
     @NotNull
     private String description;
 
-    private List<Category> productCategoryList;
+    private List<ProductCategoryDTO> productCategoryList;
 
     private boolean prescripted;
 
@@ -39,11 +38,11 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
-    public List<Category> getProductCategoryList() {
+    public List<ProductCategoryDTO> getProductCategoryList() {
         return productCategoryList;
     }
 
-    public void setProductCategoryList(List<Category> productCategoryList) {
+    public void setProductCategoryList(List<ProductCategoryDTO> productCategoryList) {
         this.productCategoryList = productCategoryList;
     }
 

@@ -34,6 +34,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public void save(CustomerDTO dto) {
+        if (dto.getNewPassword() != null && dto.getNewPassword().length() > 0) {
+            dto.setPassword(passwordEncoder.encode(dto.getNewPassword()));
+
+        }
+
         if (dto.getPersonId() == null) {
             dto.setPassword(passwordEncoder.encode(dto.getPassword()));
         }
@@ -62,7 +67,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public boolean uniqueEmail(String email) {
         Optional<Customer> result = customerRepo.findByEmail(email);
-        return result.isPresent(); //result.isEmpty() ? true : false;
+        return !result.isPresent(); //result.isEmpty() ? true : false;
     }
 
     @Override
