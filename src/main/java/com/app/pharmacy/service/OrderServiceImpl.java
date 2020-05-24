@@ -43,4 +43,9 @@ public class OrderServiceImpl implements OrderService {
         orderRepo.deleteById(id);
     }
 
+    @Override
+    public List<OrderDTO> findByCustomerEmail(String email) {
+        return orderMapper.entityToDTOList(orderRepo.findByCustomerEmail(email));
+    }
+
 }

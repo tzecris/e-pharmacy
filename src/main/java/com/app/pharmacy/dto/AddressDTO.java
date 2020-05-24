@@ -2,6 +2,8 @@ package com.app.pharmacy.dto;
 
 public class AddressDTO {
 
+    private String fullName;
+
     private Integer addressId;
 
     private String city;
@@ -64,5 +66,14 @@ public class AddressDTO {
     public void setZipCode(int zipCode) {
         this.zipCode = zipCode;
     }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
 
 }

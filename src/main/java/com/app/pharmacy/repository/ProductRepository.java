@@ -14,4 +14,16 @@ public interface ProductRepository extends PagingAndSortingRepository<Product, I
 
     public Page<Product> findAll(Pageable pageable);
 
+    public List<Product> findByProductCategoryListIn(List<Integer> c);
+
+    public List<Product> findByPriceBetween(double min, double max);
+
+    public List<Product> findByStockGreaterThan(int s);
+
+    public List<Product> findByDiscountGreaterThan(double d);
+
+    public List<Product> findByPrescripted(boolean p);
+
+    public List<Product> findByName(String name);
+
 }

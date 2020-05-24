@@ -6,6 +6,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -36,6 +37,15 @@ public class ProductOrder implements Serializable {
     public ProductOrder() {
     }
 
+    public ProductOrderPK getProductOrderPK() {
+        return productOrderPK;
+    }
+
+    public void setProductOrderPK(ProductOrderPK productOrderPK) {
+        this.productOrderPK = productOrderPK;
+    }
+
+
     public int getQuantity() {
         return quantity;
     }
@@ -58,6 +68,16 @@ public class ProductOrder implements Serializable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    @PrePersist
+    private void prePersiste() {
+        if (getProductOrderPK() == null) {
+            ProductOrderPK pk = new ProductOrderPK();
+            pk.setOrder(order);
+            pk.setProduct(product);
+            setProductOrderPK(pk);
+        }
     }
 
 }

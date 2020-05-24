@@ -47,7 +47,7 @@ public class Order implements Serializable {
     private String payment;
     @Lob
     private byte[] prescription;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "order")
     private List<ProductOrder> productOrderList;
     @JoinColumn(name = "customer_id", referencedColumnName = "person_id")
     @ManyToOne(optional = false)

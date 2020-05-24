@@ -8,7 +8,7 @@ public class IngredientDTO {
     private Integer stock;
     private Double price;
     private Double finalPrice;
-    private byte[] image;
+    private String image;
     private Double discount;
     private String description;
 
@@ -40,11 +40,11 @@ public class IngredientDTO {
         this.price = price;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

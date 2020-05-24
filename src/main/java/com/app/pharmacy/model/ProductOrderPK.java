@@ -1,59 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.app.pharmacy.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-/**
- *
- * @author Admin
- */
-
+@Embeddable
 public class ProductOrderPK implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "product_id")
-    private int productId;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "order_id")
-    private int orderId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", nullable = false, insertable = false, updatable = false)
+    private Product product;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "order_id", nullable = false, insertable = false, updatable = false)
+    private Order order;
 
     public ProductOrderPK() {
     }
 
-    public ProductOrderPK(int productId, int orderId) {
-        this.productId = productId;
-        this.orderId = orderId;
+    public Product getProduct() {
+        return product;
     }
 
-    public int getProductId() {
-        return productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public Order getOrder() {
+        return order;
     }
 
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
-    @Override
-    public String toString() {
-        return "com.app.pharmacy.model.ProductOrderPK[ productId=" + productId + ", orderId=" + orderId + " ]";
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
 }

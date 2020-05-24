@@ -45,4 +45,10 @@ public class OrderController {
         orderService.deleteById(id);
         return ResponseEntity.ok(new ResponseMessage("Order deleted successfully!"));
     }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity getOrderPerCustomer(@PathVariable String email) {
+        return ResponseEntity.ok(orderService.findByCustomerEmail(email));
+    }
+
 }

@@ -33,7 +33,7 @@ public class Ingredient implements Serializable {
     private Double price;
     @Transient
     private Double finalPrice;
-    private byte[] image;
+    private String image;
     private Double discount;
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingredient", fetch = FetchType.LAZY)
@@ -78,11 +78,11 @@ public class Ingredient implements Serializable {
         this.price = price;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

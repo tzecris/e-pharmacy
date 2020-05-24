@@ -28,7 +28,7 @@ public class OrderDTO {
 
     private String customerInfo;
 
-    private String addressInfo;
+    private AddressDTO addressInfoDto;
 
     public OrderDTO() {
     }
@@ -105,12 +105,13 @@ public class OrderDTO {
         this.customerInfo = customerInfo;
     }
 
-    public String getAddressInfo() {
-        return addressInfo;
+    public AddressDTO getAddressInfoDto() {
+        return addressInfoDto;
     }
 
-    public void setAddressInfo(String addressInfo) {
-        this.addressInfo = addressInfo;
+    public void setAddressInfoDto(AddressDTO addressInfoDto) {
+        this.addressInfoDto = addressInfoDto;
     }
+
 
 }
