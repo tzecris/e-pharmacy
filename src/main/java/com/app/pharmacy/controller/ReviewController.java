@@ -34,7 +34,12 @@ public class ReviewController {
     @GetMapping("/{id}")
     public ResponseEntity getReview(@PathVariable Integer id) {
         return ResponseEntity.ok(reviewService.findById(id));
-    } 
+    }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity getReviewByProduct(@PathVariable Integer id) {
+        return ResponseEntity.ok(reviewService.findByProduct(id));
+    }
     
     @DeleteMapping("/{id}")
     public ResponseEntity deleteReview(@PathVariable Integer id) {

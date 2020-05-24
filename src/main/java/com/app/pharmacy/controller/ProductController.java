@@ -3,6 +3,7 @@ package com.app.pharmacy.controller;
 import com.app.pharmacy.dto.ProductDTO;
 import com.app.pharmacy.dto.ProductSearchFilters;
 import com.app.pharmacy.dto.ResponseMessage;
+import com.app.pharmacy.dto.ReviewDTO;
 import com.app.pharmacy.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,12 @@ public class ProductController {
     public ResponseEntity createProduct(@RequestBody ProductDTO p) {
         productService.save(p);
         return ResponseEntity.ok(new ResponseMessage("Product created succesfully"));
+    }
+
+    @PostMapping("/review/{id}")
+    public ResponseEntity createReview(@RequestBody ReviewDTO review, @PathVariable Integer id) {
+        productService.addReview(review, id);
+        return ResponseEntity.ok(new ResponseMessage("Review posted succesfully"));
     }
     
     @GetMapping("/{id}")

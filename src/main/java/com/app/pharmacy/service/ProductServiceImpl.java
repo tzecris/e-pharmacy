@@ -2,10 +2,13 @@ package com.app.pharmacy.service;
 
 import com.app.pharmacy.dto.ProductDTO;
 import com.app.pharmacy.dto.ProductSearchFilters;
+import com.app.pharmacy.dto.ReviewDTO;
 import com.app.pharmacy.dto.SearchResults;
 import com.app.pharmacy.mapper.ProductMapper;
+import com.app.pharmacy.mapper.ReviewMapper;
 import com.app.pharmacy.model.Product;
 import com.app.pharmacy.model.ProductCategory;
+import com.app.pharmacy.model.Review;
 import com.app.pharmacy.repository.ProductRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +43,9 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductMapper productMapper;
 
+    @Autowired
+    ReviewMapper reviewMapper;
+
     @Override
     public List<ProductDTO> findAll() {
         return productMapper.entityToDTOList(productRepo.findAll());
@@ -49,6 +55,16 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void save(ProductDTO dto) {
         productRepo.save(productMapper.dtoToEntity(dto));
+    }
+
+    @Override
+    @Transactional
+    public void addReview(ReviewDTO dto, Integer id) {
+        Product product = productRepo.findById(id).get();
+        Review review = reviewMapper.dtoToEntity(dto);
+        review.setProduct(product);
+        product.getRatingsPerCustomerList().add(review);
+        productRepo.save(product);
     }
 
     @Override
@@ -82,8 +98,6 @@ public class ProductServiceImpl implements ProductService {
         CriteriaQuery<Product> criteriaQuery = cb.createQuery(Product.class);
         Root<Product> itemRoot = criteriaQuery.from(Product.class);
         ListJoin<Product, ProductCategory> joinCategory = itemRoot.joinList("productCategoryList", JoinType.LEFT);
-
-//        Join<Product, ProductCategory> join = itemRoot.join("productCategoryList");
 
         List<Predicate> preList = new ArrayList<>();
 

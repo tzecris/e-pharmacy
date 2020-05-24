@@ -151,14 +151,6 @@ public class Product implements Serializable {
         this.finalPrice = finalPrice;
     }
 
-    public List<Review> getRatingsPerCustomerCollection() {
-        return ratingsPerCustomerList;
-    }
-
-    public void setRatingsPerCustomerCollection(List<Review> ratingsPerCustomerCollection) {
-        this.ratingsPerCustomerList = ratingsPerCustomerCollection;
-    }
-
     public List<Review> getRatingsPerCustomerList() {
         return ratingsPerCustomerList;
     }

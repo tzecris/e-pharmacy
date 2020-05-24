@@ -40,4 +40,9 @@ public class ReviewServiceImpl implements ReviewService {
         ratingPerCustomerRepo.deleteById(id);
     }
 
+    @Override
+    public List<ReviewDTO> findByProduct(Integer productId) {
+        return ratingPerCustomerMapper.entityToDTOList(ratingPerCustomerRepo.findByProductId(productId));
+    }
+
 }
