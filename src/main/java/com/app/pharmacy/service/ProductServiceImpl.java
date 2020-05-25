@@ -131,7 +131,7 @@ public class ProductServiceImpl implements ProductService {
         preList.add(predicateRangePrice);
 
         Predicate finalPredicate = cb.and(preList.toArray(new Predicate[preList.size()]));
-
+        criteriaQuery.distinct(true);
         criteriaQuery.where(finalPredicate);
 
         if (order.equals("DESC")) {
