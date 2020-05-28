@@ -6,6 +6,8 @@ E-pharmacy is a CRUD RestAPI (filtering and pagination) for an online pharmacy e
 
 Maven and Tomcat is required.
 
+In application propperties you must setup a database. MySQL driver is provided.
+
 ```bash
 mvn clean install 
 mvn spring-boot:run
